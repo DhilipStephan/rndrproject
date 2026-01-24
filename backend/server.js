@@ -7,9 +7,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Serve frontend
-app.use(express.static(path.join(__dirname, "public")));
+// Absolute path to frontend folder
+const frontendPath = path.join(__dirname, "../frontend");
 
+// Serve static files (css, images, html)
+app.use(express.static(frontendPath));
+
+// API
 const FILE = "messages.json";
 
 app.post("/contact", (req, res) => {
@@ -19,12 +23,7 @@ app.post("/contact", (req, res) => {
     return res.status(400).json({ message: "All fields are required" });
   }
 
-  const entry = {
-    name,
-    email,
-    message,
-    date: new Date().toISOString()
-  };
+  const entry = { name, email, message, date: new Date().toISOString() };
 
   let data = [];
   if (fs.existsSync(FILE)) {
@@ -39,7 +38,7 @@ app.post("/contact", (req, res) => {
 
 // Home route
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile(path.join(frontendPath, "index.html"));
 });
 
 const PORT = process.env.PORT || 3000;
