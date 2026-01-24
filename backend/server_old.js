@@ -1,14 +1,10 @@
 const express = require("express");
 const fs = require("fs");
 const cors = require("cors");
-const path = require("path");
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-
-// Serve frontend
-app.use(express.static(path.join(__dirname, "public")));
 
 const FILE = "messages.json";
 
@@ -37,13 +33,7 @@ app.post("/contact", (req, res) => {
   res.json({ message: "Thank you! We will contact you soon." });
 });
 
-// Home route
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
-});
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log("Server running on port", PORT);
+app.listen(3000, () => {
+  console.log("Backend running on http://localhost:3000");
 });
 
