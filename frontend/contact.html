@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Contact | RNDR EXPORTES</title>
+  <meta charset="UTF-8">
+  <title>Contact Us | RNDR EXPORTES</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -18,42 +19,88 @@
 </header>
 
 <section>
-  <h2 class="section-title">Contact Us</h2>
-
-  <form id="contactForm" style="max-width:500px;margin:auto;">
-    <input type="text" id="name" placeholder="Your Name" required><br><br>
-    <input type="email" id="email" placeholder="Your Email" required><br><br>
-    <textarea id="message" placeholder="Your Message" rows="5" required></textarea><br><br>
-    <button type="submit">Send Message</button>
-  </form>
-
-  <p id="response" style="text-align:center;margin-top:20px;"></p>
+  <h2 class="section-title">Get in Touch</h2>
+  <p style="text-align:center;max-width:850px;margin:auto;">
+    Have questions about importing or exporting?  
+    Reach out to RNDR EXPORTES and our team will respond promptly.
+  </p>
 </section>
 
-<footer>© 2026 RNDR EXPORTES</footer>
+<section>
+  <div class="cards">
 
-<script>
-document.getElementById("contactForm").addEventListener("submit", async function(e) {
-  e.preventDefault();
+    <!-- Contact Info -->
+    <div class="card">
+      <h3>Contact Information</h3>
+      <p><strong>📍 Address:</strong><br>
+        RNDR EXPORTES<br>
+        Chennai, Tamil Nadu, India
+      </p>
 
-  const data = {
-    name: name.value,
-    email: email.value,
-    message: message.value
-  };
+      <p><strong>📞 Phone:</strong><br>
+        +91 90000 00000
+      </p>
 
-	<!--const res = await fetch("http://localhost:3000/contact", { -->
-	const res = await fetch("http://backend:3000/contact", {
-     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data)
-  });
+      <p><strong>📧 Email:</strong><br>
+        info@rndrexportes.com
+      </p>
 
-  const result = await res.json();
-  document.getElementById("response").innerText = result.message;
-  this.reset();
-});
-</script>
+      <p><strong>🕒 Working Hours:</strong><br>
+        Monday – Saturday: 9:00 AM – 6:00 PM
+      </p>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="card">
+      <h3>Send Us a Message</h3>
+
+      <form action="http://localhost:3000/contact" method="POST">
+        <label>Full Name</label><br>
+        <input type="text" name="name" required style="width:100%;padding:10px;margin-bottom:12px;"><br>
+
+        <label>Email Address</label><br>
+        <input type="email" name="email" required style="width:100%;padding:10px;margin-bottom:12px;"><br>
+
+        <label>Subject</label><br>
+        <input type="text" name="subject" required style="width:100%;padding:10px;margin-bottom:12px;"><br>
+
+        <label>Message</label><br>
+        <textarea name="message" rows="5" required style="width:100%;padding:10px;margin-bottom:12px;"></textarea><br>
+
+        <button type="submit" style="
+          background: var(--olive);
+          color: white;
+          border: none;
+          padding: 12px 30px;
+          border-radius: 25px;
+          cursor: pointer;
+          font-weight: bold;">
+          Send Message
+        </button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- MAP -->
+<section>
+  <h2 class="section-title">Our Location</h2>
+  <div style="max-width:900px;margin:auto;">
+    <iframe
+      src="https://www.google.com/maps?q=chennai&t=&z=12&ie=UTF8&iwloc=&output=embed"
+      width="100%"
+      height="350"
+      style="border:0;border-radius:12px;"
+      allowfullscreen=""
+      loading="lazy">
+    </iframe>
+  </div>
+</section>
+
+<footer>
+  © 2026 RNDR EXPORTES. All Rights Reserved.
+</footer>
 
 </body>
 </html>
