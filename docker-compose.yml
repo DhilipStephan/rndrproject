@@ -2,16 +2,16 @@ version: "3.8"
 
 services:
   backend:
-    build: ./backend
+    build:
+      context: ./backend
     container_name: rndr-backend
     ports:
       - "3000:3000"
-    volumes:
-      - ./backend:/app
     restart: always
 
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
     container_name: rndr-frontend
     ports:
       - "8080:80"
