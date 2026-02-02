@@ -6,10 +6,10 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
+	
 <header class="site-header">
   <div class="logo-area">
-    <img src="images/logo.png" alt="RNDR EXPORTES Logo" class="site-logo">
+    <img src="images/logo.png" alt="RNDR EXPORTES Logo" class="site-logo" id="logo">
     <span class="site-title">RNDR EXPORTES</span>
   </div>
 
@@ -21,6 +21,15 @@
     <a href="contact.html">Contact</a>
   </nav>
 </header>
+
+<!-- Logo Assembly Animation -->
+<div id="logo-animation" class="logo-anim">
+  <img src="images/logo.png" class="piece p1">
+  <img src="images/logo.png" class="piece p2">
+  <img src="images/logo.png" class="piece p3">
+  <img src="images/logo.png" class="piece p4">
+</div>
+
 
 
 <section class="hero">
@@ -102,6 +111,22 @@
 <footer>
   © 2026 RNDR EXPORTES. All Rights Reserved.
 </footer>
+<script>
+const logo = document.getElementById("logo");
+const anim = document.getElementById("logo-animation");
+
+logo.addEventListener("click", () => {
+  anim.style.display = "block";
+  anim.classList.add("active");
+
+  setTimeout(() => {
+    anim.classList.remove("active");
+    anim.style.display = "none";
+  }, 1200);
+});
+</script>
+
+
 
 </body>
 </html>
